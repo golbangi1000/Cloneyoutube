@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ch12pratice.VideoAdapter.ViewHolder.Companion.diffUtil
+import com.bumptech.glide.Glide
 import com.example.ch12pratice.databinding.ItemVideoBinding
 
 class VideoAdapter(private val context: Context): ListAdapter<VideoItem, VideoAdapter.ViewHolder>(diffUtil){
@@ -14,10 +14,16 @@ class VideoAdapter(private val context: Context): ListAdapter<VideoItem, VideoAd
     inner class ViewHolder(private val binding : ItemVideoBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item : VideoItem){
             binding.titleTextView.text = item.title
-            binding.subTitleTextView.text = context.getString(R.string.sub_title_video_info) "${item.channelName}    조회수 ${item.viewCount}   ${item.dataText}"
-            binding.channelLogoImageView
-            binding.videoThumbnailImageView
+            binding.subTitleTextView.text = context.getString(R.string.sub_title_video_info, item.channelName, item.viewCount, item.dateText)
 
+            Glide.with(binding.videoThumbnailImageView)
+                .load(item.videoThumb)
+                .into(binding.videoThumbnailImageView)
+
+            Glide.with(binding.channelLogoImageView)
+                .load(item.channelThumb)
+                .circleCrop()
+                .into(binding.channelLogoImageView)
         }
     }
 
