@@ -24,7 +24,7 @@ class ExoPlayerMotionLayout
                 distanceX: Float,
                 distanceY: Float
             ): Boolean {
-                return 
+                return
             }
         })
     }
