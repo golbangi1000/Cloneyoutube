@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/motionLayout"
+    app:layoutDescription="@xml/player_scene"
     tools:context=".MainActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,8 +68,9 @@
         app:layout_constraintBottom_toBottomOf="@id/videoPlayerContainer"
         app:layout_constraintEnd_toEndOf="@id/videoPlayerContainer"
         app:layout_constraintStart_toStartOf="@id/videoPlayerContainer"
-        app:layout_constraintTop_toTopOf="@id/videoPlayerContainer" />
-    
+        app:layout_constraintTop_toTopOf="@id/videoPlayerContainer"
+        app:resize_mode="fixed_width" />
+
     <TextView
         android:id="@+id/videoTitleTextView"
         android:layout_width="0dp"
@@ -79,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="@id/videoPlayerContainer"
         app:layout_constraintEnd_toStartOf="@id/controlButton"
         app:layout_constraintStart_toEndOf="@id/playerView"
-        app:layout_constraintTop_toTopOf="@id/videoPlayerContainer"/>
+        app:layout_constraintTop_toTopOf="@id/videoPlayerContainer" />
 
     <ImageView
         android:id="@+id/controlButton"
@@ -104,7 +108,6 @@
         app:layout_constraintEnd_toEndOf="@id/videoPlayerContainer"
         app:layout_constraintTop_toTopOf="@id/videoPlayerContainer"
         tools:alpha="1" />
-
 
     <FrameLayout
         android:id="@+id/recyclerViewContainer"
@@ -134,4 +137,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
