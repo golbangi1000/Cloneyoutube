@@ -2,13 +2,13 @@ package com.example.ch12pratice
 
 import com.google.gson.annotations.SerializedName
 
+
 data class VideoList(
     @SerializedName("videos")
-    val videos: List<VideoItem>
+    val videos: List<VideoEntity>
 )
 
-
-data class VideoItem(
+data class VideoEntity(
     @SerializedName("id")
     val id: String,
     @SerializedName("title")
@@ -25,7 +25,7 @@ data class VideoItem(
     val channelThumb: String,
     @SerializedName("thumb")
     val videoThumb: String,
-    )
+)
 
 
 /*

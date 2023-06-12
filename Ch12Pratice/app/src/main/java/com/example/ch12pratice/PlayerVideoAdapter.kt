@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ch12pratice.databinding.ItemVideoBinding
+import com.example.ch12pratice.databinding.ItemVideoHeaderBinding
 import com.google.android.exoplayer2.audio.MpegAudioUtil.Header
 
 

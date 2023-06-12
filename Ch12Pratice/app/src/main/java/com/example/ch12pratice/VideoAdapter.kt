@@ -9,12 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ch12pratice.databinding.ItemVideoBinding
 
-class VideoAdapter(private val context: Context, private val onClick: (VideoItem) -> Unit): ListAdapter<VideoItem, VideoAdapter.ViewHolder>(diffUtil){
+class VideoAdapter(private val context: Context, private val onClick: (VideoEntity) -> Unit) :
+    ListAdapter<VideoEntity, VideoAdapter.ViewHolder>(diffUtil) {
 
-    inner class ViewHolder(private val binding : ItemVideoBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(item : VideoItem){
+    inner class ViewHolder(private val binding: ItemVideoBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: VideoEntity) {
+
             binding.titleTextView.text = item.title
-            binding.subTitleTextView.text = context.getString(R.string.sub_title_video_info, item.channelName, item.viewCount, item.dateText)
+            binding.subTitleTextView.text = context.getString(
+                R.string.sub_title_video_info, item.channelName, item.viewCount, item.dateText
+            )
 
             Glide.with(binding.videoThumbnailImageView)
                 .load(item.videoThumb)
@@ -25,16 +31,17 @@ class VideoAdapter(private val context: Context, private val onClick: (VideoItem
                 .circleCrop()
                 .into(binding.channelLogoImageView)
 
-            binding.root.setOnClickListener{
+            binding.root.setOnClickListener {
                 onClick.invoke(item)
             }
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return  ViewHolder(
+        return ViewHolder(
             ItemVideoBinding.inflate(
-                LayoutInflater.from(parent.context ),
+                LayoutInflater.from(parent.context),
                 parent,
                 false
             )
@@ -45,13 +52,13 @@ class VideoAdapter(private val context: Context, private val onClick: (VideoItem
         holder.bind(currentList[position])
     }
 
-    companion object{
-        val diffUtil = object : DiffUtil.ItemCallback<VideoItem>() {
-            override fun areItemsTheSame(oldItem: VideoItem, newItem: VideoItem): Boolean {
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<VideoEntity>() {
+            override fun areItemsTheSame(oldItem: VideoEntity, newItem: VideoEntity): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: VideoItem, newItem: VideoItem): Boolean {
+            override fun areContentsTheSame(oldItem: VideoEntity, newItem: VideoEntity): Boolean {
                 return oldItem == newItem
             }
         }
