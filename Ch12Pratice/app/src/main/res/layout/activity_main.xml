@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.ch12pratice.ExoPlayerMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/motionLayout"
     app:layoutDescription="@xml/player_scene"
     tools:context=".MainActivity">
 
@@ -37,6 +37,7 @@
                     android:textSize="24sp"
                     app:drawableStartCompat="@drawable/baseline_smart_display_24"
                     app:drawableTint="?attr/colorPrimary" />
+
             </androidx.appcompat.widget.Toolbar>
 
 
@@ -137,4 +138,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+
+</com.example.ch12pratice.ExoPlayerMotionLayout>

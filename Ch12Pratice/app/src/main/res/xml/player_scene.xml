@@ -2,14 +2,18 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
-
     <Transition
-        constraintSetEnd="@+id/expand"
-        constraintSetStart="@+id/collapse"
+        motion:constraintSetEnd="@+id/expand"
+        motion:constraintSetStart="@+id/collapse"
         motion:duration="300"
         motion:motionInterpolator="linear">
 
-        <OnSwipe motion:touchAnchorId="@id/videoPlayerContainer" />
+        <OnSwipe
+            motion:touchRegionId="@id/videoPlayerContainer"
+            motion:touchAnchorId="@id/videoPlayerContainer" />
+        <OnClick
+            motion:clickAction="transitionToEnd"
+            motion:targetId="@id/videoPlayerContainer" />
 
         <KeyFrameSet>
             <KeyPosition
@@ -19,15 +23,16 @@
                 motion:percentWidth="1"
                 motion:percentX="1" />
 
-
             <KeyAttribute
                 android:alpha="0"
                 motion:framePosition="25"
                 motion:motionTarget="@+id/playerRecyclerView" />
+
             <KeyAttribute
                 android:alpha="0.1"
                 motion:framePosition="10"
                 motion:motionTarget="@+id/videoTitleTextView" />
+
             <KeyAttribute
                 android:alpha="0.1"
                 motion:framePosition="10"
@@ -38,6 +43,10 @@
                 motion:motionTarget="@+id/controlButton" />
         </KeyFrameSet>
     </Transition>
+    <Transition
+        motion:constraintSetEnd="@+id/hide"
+        motion:constraintSetStart="@+id/collapse"
+        motion:duration="300" />
 
 
     <ConstraintSet android:id="@+id/expand">
